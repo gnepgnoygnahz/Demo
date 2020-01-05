@@ -1,4 +1,4 @@
-package kafka;
+package kafka.test;
 
 import kafka.deserializer.PersonDeseralizer;
 import kafka.interceptor.PersonConsumerInterceptor;

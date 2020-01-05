@@ -1,4 +1,4 @@
-package kafka;
+package kafka.test;
 
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.common.KafkaFuture;

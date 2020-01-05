@@ -1,6 +1,5 @@
 package kafka.interceptor;
 
-import kafka.KafkaProducerTest;
 import kafka.pojo.Person;
 import org.apache.kafka.clients.producer.ProducerInterceptor;
 import org.apache.kafka.clients.producer.ProducerRecord;

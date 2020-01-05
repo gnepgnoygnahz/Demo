@@ -1,4 +1,4 @@
-package kafka;
+package kafka.test;
 
 import kafka.interceptor.PersonProducerInterceptor1;
 import kafka.interceptor.PersonProducerInterceptor2;
