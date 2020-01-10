@@ -53,8 +53,8 @@ public class SecondarySortApp {
         job.setOutputKeyClass(IntWritable.class);
         job.setOutputValueClass(IntWritable.class);
 
-        //设置排序对比器，因为ComboKey已经实现了WritableComparable，重写了compareTo方法，所以此处设不设都无所谓
-        //job.setSortComparatorClass(ComboKeyComparator.class);
+        //设置排序对比器
+        job.setSortComparatorClass(ComboKeyComparator.class);
         //设置mapper端聚合器
         //job.setCombinerClass(SecondaryCombiner.class);
         //设置mapper端分区器
