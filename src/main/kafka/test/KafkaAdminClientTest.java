@@ -1,5 +1,7 @@
 package kafka.test;
 
+import kafka.admin.AdminUtils;
+import kafka.admin.BrokerMetadata;
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.Node;
@@ -10,6 +12,11 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import scala.Option;
+import scala.collection.JavaConverters;
+import scala.collection.Seq;
+import scala.collection.convert.Decorators;
+import scala.collection.mutable.Buffer;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -234,5 +241,24 @@ public class KafkaAdminClientTest {
         newPartitionsMap.put("test3", newPartitions);
         CreatePartitionsResult partitions = client.createPartitions(newPartitionsMap, new CreatePartitionsOptions().timeoutMs(10000));
         partitions.all().get();
+    }
+
+    /**
+     * 计算副本分配方式
+     */
+    @Test
+    public void computeReplicaDistribution() {
+        int partitions = 3;
+        int replicationFactor = 2;
+        List<BrokerMetadata> brokerMetadata = new ArrayList<>();
+        BrokerMetadata brokerMetadata1 = new BrokerMetadata(1, Option.apply("rack1"));
+        BrokerMetadata brokerMetadata2 = new BrokerMetadata(2, Option.apply("rack1"));
+        BrokerMetadata brokerMetadata3 = new BrokerMetadata(3, Option.apply("rack1"));
+        brokerMetadata.add(brokerMetadata1);
+        brokerMetadata.add(brokerMetadata2);
+        brokerMetadata.add(brokerMetadata3);
+        Decorators.AsScala<Buffer<BrokerMetadata>> bufferAsScala = JavaConverters.asScalaBufferConverter(brokerMetadata);
+        scala.collection.Map<Object, Seq<Object>> partitionToBroker = AdminUtils.assignReplicasToBrokers(bufferAsScala.asScala(), partitions, replicationFactor, -1, -1);
+        logger.info(partitionToBroker);//Map(2 -> ArrayBuffer(3, 1), 1 -> ArrayBuffer(2, 3), 0 -> ArrayBuffer(1, 2))
     }
 }
