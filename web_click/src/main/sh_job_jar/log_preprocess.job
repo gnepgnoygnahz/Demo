@@ -1,0 +1,4 @@
+#log_preprocess
+type=command
+dependencies=move_to_pre_workdir
+command=/home/kobe/apps/weblog_sh/log_preprocess.sh

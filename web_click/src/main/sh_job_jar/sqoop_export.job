@@ -1,0 +1,4 @@
+#sqoop_export
+type=command
+dependencies=etl_detail
+command=/home/kobe/apps/weblog_sh/sqoop_export.sh

@@ -1,0 +1,4 @@
+#load_ods_tables
+type=command
+dependencies=log_preprocess
+command=/home/kobe/apps/weblog_sh/load_ods_tables.sh

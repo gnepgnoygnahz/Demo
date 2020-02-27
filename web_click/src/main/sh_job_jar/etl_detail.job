@@ -1,0 +1,4 @@
+#etl_detail
+type=command
+dependencies=load_ods_tables
+command=/home/kobe/apps/weblog_sh/etl_detail.sh

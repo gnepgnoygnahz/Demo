@@ -1,0 +1,3 @@
+#move_to_pre_workdir
+type=command
+command=/home/kobe/apps/weblog_sh/move_to_pre_workdir.sh

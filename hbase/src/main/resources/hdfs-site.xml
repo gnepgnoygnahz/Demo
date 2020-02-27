@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <!--指定hdfs的nameservice为zyp，需要和core-site.xml中的保持一致 -->
+    <property>
+        <name>dfs.nameservices</name>
+        <value>zyp</value>
+    </property>
+    <!-- zyp下面有两个NameNode，分别是zyp-1,zyp-2 -->
+    <property>
+        <name>dfs.ha.namenodes.zyp</name>
+        <value>zyp-1,zyp-2</value>
+    </property>
+    <!-- zyp-1的RPC通信地址 -->
+    <property>
+        <name>dfs.namenode.rpc-address.zyp.zyp-1</name>
+        <value>zyp-1:9000</value>
+    </property>
+    <!-- zyp-1的http通信地址 -->
+    <property>
+        <name>dfs.namenode.http-address.zyp.zyp-1</name>
+        <value>zyp-1:50070</value>
+    </property>
+    <!-- zyp-2的RPC通信地址 -->
+    <property>
+        <name>dfs.namenode.rpc-address.zyp.zyp-2</name>
+        <value>zyp-2:9000</value>
+    </property>
+    <!-- zyp-2的http通信地址 -->
+    <property>
+        <name>dfs.namenode.http-address.zyp.zyp-2</name>
+        <value>zyp-2:50070</value>
+    </property>
+    <!-- 指定NameNode的edits元数据在JournalNode上的存放位置 最后的zyp只是个文件夹名称，并不一定非得是集群id -->
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://zyp-1:8485;zyp-2:8485;zyp-3:8485/zyp</value>
+    </property>
+    <!-- 指定JournalNode在本地磁盘存放数据的位置 -->
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/home/zyp/soft/hadoop/data/journaldata</value>
+    </property>
+    <!-- 开启NameNode失败自动切换 -->
+    <property>
+        <name>dfs.ha.automatic-failover.enabled</name>
+        <value>true</value>
+    </property>
+    <!-- 配置失败自动切换实现方式 name最后一个名字 .zyp 为集群名字-->
+    <property>
+        <name>dfs.client.failover.proxy.provider.zyp</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+    <!-- 配置隔离机制方法，多个机制用换行分割，即每个机制暂用一行-->
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>
+            sshfence
+            shell(/bin/true)
+        </value>
+    </property>
+    <!-- 使用sshfence隔离机制时需要ssh免登陆 -->
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/home/zyp/.ssh/id_rsa</value>
+    </property>
+    <!-- 配置sshfence隔离机制超时时间 -->
+    <property>
+        <name>dfs.ha.fencing.ssh.connect-timeout</name>
+        <value>30000</value>
+    </property>
+</configuration>

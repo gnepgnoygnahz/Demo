@@ -2,11 +2,11 @@
 <configuration status="OFF" monitorInterval="60">
     <Properties>
         <!-- （*必须,各应用需要修改） 部署应用的名称,命名规则 :全部小写字母、中短横线、数字,与微服务命名,disconf中命名一致 -->
-        <property name="APPNAME">zyp</property>
+        <property name="APPNAME">hadoop</property>
         <!-- （各应用需要修改）部署应用的端口号，用于一台服务器部署多台应用的情况,如果不需要，保持默认 -->
         <property name="PORT">${sys:crtServerPort:-8080}</property>
         <!-- （各应用需要修改）日志文件本地存放目录路径 建议各个环境跟生产环境统一起来,方便维护 -->
-        <property name="logBaseFolder">/data/logs</property>
+        <property name="logBaseFolder">/data/logs/hadoop</property>
 
         <!-- 日志文件名称的前缀部分，以下为建议值 -->
         <property name="logFileNamePrefix">${APPNAME}</property>
