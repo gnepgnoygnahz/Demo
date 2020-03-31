@@ -1,8 +1,6 @@
-package log.collector.bean.insure;
+package bean.dataBase.insure;
 
-import lombok.Data;
-
-import java.util.List;
+import lombok.*;
 
 /**
  * @ClassName Tou
@@ -13,6 +11,18 @@ import java.util.List;
  */
 @Data
 public class Insured {
+    /**
+     * 团单号
+     */
+    private String grpContNo;
+    /**
+     * 个单号
+     */
+    private String contNo;
+    /**
+     * 投保单号
+     */
+    private String prtNo;
     /**
      * 被保人客户号
      */
@@ -105,8 +115,4 @@ public class Insured {
      * 被保人与主被保险人关系
      */
     private String relaToMainInsured;
-    /**
-     * 险种列表
-     */
-    private List<Risk> risks;
 }

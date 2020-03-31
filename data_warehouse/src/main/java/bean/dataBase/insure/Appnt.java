@@ -1,4 +1,4 @@
-package log.collector.bean.insure;
+package bean.dataBase.insure;
 
 import lombok.*;
 
@@ -11,6 +11,18 @@ import lombok.*;
  */
 @Data
 public class Appnt {
+    /**
+     * 团单号
+     */
+    private String grpContNo;
+    /**
+     * 个单号
+     */
+    private String contNo;
+    /**
+     * 投保单号
+     */
+    private String prtNo;
     /**
      * 投保人客户号
      */

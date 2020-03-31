@@ -248,7 +248,7 @@ public class KafkaAdminClientTest {
      */
     @Test
     public void computeReplicaDistribution() {
-        int partitions = 3;
+        /*int partitions = 3;
         int replicationFactor = 2;
         List<BrokerMetadata> brokerMetadata = new ArrayList<>();
         BrokerMetadata brokerMetadata1 = new BrokerMetadata(1, Option.apply("rack1"));
@@ -260,5 +260,6 @@ public class KafkaAdminClientTest {
         Decorators.AsScala<Buffer<BrokerMetadata>> bufferAsScala = JavaConverters.asScalaBufferConverter(brokerMetadata);
         scala.collection.Map<Object, Seq<Object>> partitionToBroker = AdminUtils.assignReplicasToBrokers(bufferAsScala.asScala(), partitions, replicationFactor, -1, -1);
         System.out.println(partitionToBroker);//Map(2 -> ArrayBuffer(3, 1), 1 -> ArrayBuffer(2, 3), 0 -> ArrayBuffer(1, 2))
+    */
     }
 }

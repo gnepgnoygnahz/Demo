@@ -1,6 +1,5 @@
 package zookeeper;
 
-import lombok.extern.log4j.Log4j2;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.junit.After;

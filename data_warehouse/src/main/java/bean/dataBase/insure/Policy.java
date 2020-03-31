@@ -1,6 +1,6 @@
-package log.collector.bean.insure;
+package bean.dataBase.insure;
 
-import lombok.Data;
+import lombok.*;
 
 /**
  * @ClassName Tou
@@ -19,10 +19,6 @@ public class Policy {
      * 个单号
      */
     private String contNo;
-    /**
-     * 总单投保单号码
-     */
-    private String proposalContNo;
     /**
      * 投保单号
      */

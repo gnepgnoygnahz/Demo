@@ -1,6 +1,6 @@
-package log.collector.bean.insure;
+package bean.dataBase.insure;
 
-import lombok.Data;
+import lombok.*;
 
 /**
  * @ClassName Bnf
@@ -11,6 +11,22 @@ import lombok.Data;
  */
 @Data
 public class Bnf {
+    /**
+     * 团单号
+     */
+    private String grpContNo;
+    /**
+     * 个单号
+     */
+    private String contNo;
+    /**
+     * 投保单号
+     */
+    private String prtNo;
+    /**
+     * 险种号
+     */
+    private String polNo;
     /**
      * 受益人类别：1生存受益人，2死亡受益人
      */

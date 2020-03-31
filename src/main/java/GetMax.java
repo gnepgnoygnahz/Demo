@@ -1,7 +1,3 @@
-package java;
-
-import org.junit.Test;
-
 /**
  * Create By Zhangyp
  * Date:  2019/10/26
@@ -50,7 +46,6 @@ public class GetMax {
         System.out.println(Runtime.getRuntime().availableProcessors());
     }
 
-    @Test
     public void calMoney() {
         int money = 0;
         for (int i = 1; i <= 44; i++) {

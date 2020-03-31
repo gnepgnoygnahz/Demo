@@ -1,4 +1,4 @@
-package log.collector.bean.insure;
+package bean.dataBase.insure;
 
 import lombok.*;
 
@@ -11,6 +11,18 @@ import lombok.*;
  */
 @Data
 public class BaseInfo {
+    /**
+     * 团单号
+     */
+    private String grpContNo;
+    /**
+     * 个单号
+     */
+    private String contNo;
+    /**
+     * 投保单号
+     */
+    private String prtNo;
     /**
      * 银行编码：02工商银行，03农业银行，05建设银行，10广东发展银行，23华夏银行，91邮政储蓄银行，
      */
@@ -53,6 +65,4 @@ public class BaseInfo {
      * 9手机银行，10移动展业，16个人营销
      */
     private String sourceType;
-
-
 }

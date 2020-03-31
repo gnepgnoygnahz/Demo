@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.*;
 
-enum CellType {
+enum CellType1 {
     ROW,
     FAMILY,
     QUALIFY,
@@ -216,9 +216,9 @@ public class TestCRUD {
         Result result = table.get(get);
         List<Cell> columnCells = result.getColumnCells(Bytes.toBytes("f1"), Bytes.toBytes("id"));
         for (Cell columnCell : columnCells) {
-            System.out.println(getCellData(columnCell, CellType.ROW) + " : " + getCellData(columnCell, CellType.FAMILY)
-                    + " : " + getCellData(columnCell, CellType.QUALIFY) + " : " + getCellData(columnCell, CellType.VALUE)
-                    + " : " + getCellData(columnCell, CellType.TIMESTAMP)
+            System.out.println(getCellData(columnCell, CellType1.ROW) + " : " + getCellData(columnCell, CellType1.FAMILY)
+                    + " : " + getCellData(columnCell, CellType1.QUALIFY) + " : " + getCellData(columnCell, CellType1.VALUE)
+                    + " : " + getCellData(columnCell, CellType1.TIMESTAMP)
             );
         }
     }
@@ -480,7 +480,7 @@ public class TestCRUD {
         }
     }
 
-    public String getCellData(Cell cell, CellType cellType) {
+    public String getCellData(Cell cell, CellType1 cellType) {
         byte[] data = cell.getRowArray();
         switch (cellType) {
             case ROW:

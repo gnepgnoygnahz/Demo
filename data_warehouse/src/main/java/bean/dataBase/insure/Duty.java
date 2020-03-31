@@ -1,6 +1,6 @@
-package log.collector.bean.insure;
+package bean.dataBase.insure;
 
-import lombok.Data;
+import lombok.*;
 
 /**
  * @ClassName Duty
@@ -11,6 +11,22 @@ import lombok.Data;
  */
 @Data
 public class Duty {
+    /**
+     * 团单号
+     */
+    private String grpContNo;
+    /**
+     * 个单号
+     */
+    private String contNo;
+    /**
+     * 投保单号
+     */
+    private String prtNo;
+    /**
+     * 险种号
+     */
+    private String polNo;
     /**
      * 责任编码
      */
@@ -23,5 +39,4 @@ public class Duty {
      * 责任保费
      */
     private String dutyPrem;
-
 }

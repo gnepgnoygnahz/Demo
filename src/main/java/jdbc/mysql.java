@@ -1,16 +1,10 @@
 package jdbc;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.sql.*;
+import java.sql.SQLException;
 
 public class mysql {
 
-    private static final Logger logger = LogManager.getLogger(mysql.class);
+    /*private static final Logger logger = LogManager.getLogger(mysql.class);
     private Connection connection;
     private Statement statement;
     private Long start;
@@ -37,11 +31,11 @@ public class mysql {
         System.out.println(end - start);
     }
 
-    /**
+    *//**
      * 140818ms
      *
      * @throws SQLException
-     */
+     *//*
     @Test
     public void testStatement() throws SQLException {
         statement = connection.createStatement();
@@ -51,11 +45,11 @@ public class mysql {
         }
     }
 
-    /**
+    *//**
      * 82110
      *
      * @throws SQLException
-     */
+     *//*
     @Test
     public void testPrepareStatement() throws SQLException {
         String sql = "insert into user(name,age) values(?,?)";
@@ -72,7 +66,7 @@ public class mysql {
         preparedStatement.executeBatch();
     }
 
-    /**
+    *//**
      * 32040
      * 存储过程 没有返回值  可以在入参定义 (OUT param1 INT)，调用的时候call simpleproc(@a)，然后查询 select @a
      * @throws SQLException
@@ -94,7 +88,7 @@ public class mysql {
      * 		SET i := i + 1;
      * 	END WHILE;
      * END
-     */
+     *//*
     @Test
     public void testProcedure() throws SQLException {
         String sql = "{call batchInsert(?)}";
@@ -104,7 +98,7 @@ public class mysql {
         callableStatement.execute();
     }
 
-    /**
+    *//**
      * 方法 有返回值的存储过程
      * CREATE FUNCTION ADDS ( a INT, b INT ) RETURNS INT BEGIN
      * RETURN a + b ;
@@ -125,7 +119,7 @@ public class mysql {
      * set global log_bin_trust_function_creators=TRUE;
      *
      * @throws SQLException
-     */
+     *//*
     @Test
     public void testFunction() throws SQLException {
         String sql = "{? = call adds(?, ?)}";
@@ -138,7 +132,7 @@ public class mysql {
         System.out.println("sum ===" + callableStatement.getInt(1));
     }
 
-    /**
+    *//**
      * 事务的并发执行，容易出现的几个现象
      * --------------------------
      * 	1.脏读
@@ -167,7 +161,7 @@ public class mysql {
      * 	SET GLOBAL TRANSACTION ISOLATION LEVEL READ COMMITTED;
      *
      * @throws SQLException
-     */
+     *//*
     @Test
     public void testIsolationLevel() throws SQLException {
         connection.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
@@ -178,5 +172,5 @@ public class mysql {
             System.out.println("count==========" + result);
         }
 
-    }
+    }*/
 }
