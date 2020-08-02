@@ -23,15 +23,15 @@ import java.util.concurrent.TimeoutException;
  */
 public class KafkaProducerTest {
 
-    private static final String brokerList = "zyp-1:9092,zyp-2:9092,zyp-3:9092";
+    public static final String brokerList = "zyp-1:9092,zyp-2:9092,zyp-3:9092";
 
-    private static final String topic = "person";
+    public static final String topic = "person";
 
-    private static final String clientId = "Producer-01";
+    public static final String clientId = "Producer-01";
 
-    private static final Logger logger = LogManager.getLogger(KafkaProducerTest.class);
+    public static final Logger logger = LogManager.getLogger(KafkaProducerTest.class);
 
-    private static Properties initConfig() {
+    public static Properties initConfig() {
         logger.info("1");
         Properties props = new Properties();
 
@@ -68,6 +68,9 @@ public class KafkaProducerTest {
 
         //两次重试之间的时间间隔，默认100
         props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, 50);
+
+        //设置事务id
+        props.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "transactionalId");
 
         return props;
     }

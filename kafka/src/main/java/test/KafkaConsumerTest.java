@@ -2,6 +2,7 @@ package test;
 
 import deserializer.PersonDeseralizer;
 import interceptor.PersonConsumerInterceptor;
+import partitionAssignor.RandomPartitionAssignor;
 import pojo.Person;
 import thread.KafkaConsumerThread;
 import org.apache.kafka.clients.consumer.*;
@@ -21,19 +22,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class KafkaConsumerTest {
 
-    private static final String brokerList = "zyp-1:9092,zyp-2:9092,zyp-3:9092";
+    public static final String brokerList = "zyp-1:9092,zyp-2:9092,zyp-3:9092";
 
-    private static final List<String> topic = Arrays.asList("person", "test");
+    public static final List<String> topic = Arrays.asList("person", "test");
 
-    private static final String groupId = "Group-01";
+    public static final String groupId = "Group-01";
 
-    private static final String clientId = "Consumer-01";
+    public static final String clientId = "Consumer-01";
 
-    private static final AtomicBoolean isRunning = new AtomicBoolean(true);
+    public static final AtomicBoolean isRunning = new AtomicBoolean(true);
 
-    private static final Logger logger = LogManager.getLogger(KafkaConsumerTest.class);
+    public static final Logger logger = LogManager.getLogger(KafkaConsumerTest.class);
 
-    private static Properties initConfig() {
+    public static Properties initConfig() {
         Properties props = new Properties();
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         //props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
@@ -46,6 +47,8 @@ public class KafkaConsumerTest {
         //使用自定义拦截器,多个拦截器用  , 隔开,顺序执行。
         //在拦截链中，如果某个拦截器执行失败，那么下一个拦截器会接着从上－个执行成功的拦截器继续执行
         props.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, PersonConsumerInterceptor.class.getName());
+        //使用自定义的随机分区分配策略
+        props.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, RandomPartitionAssignor.class.getName());
         return props;
     }
 

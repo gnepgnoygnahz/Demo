@@ -17,6 +17,7 @@
         <module>kafka</module>
         <module>web_click</module>
         <module>data_warehouse</module>
+        <module>redis</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

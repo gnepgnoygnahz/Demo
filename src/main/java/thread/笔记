@@ -1,0 +1,58 @@
+ThreadLocal<T> tl = new ThreadLocal<>();
+t1.get();
+ti.set(T);
+
+Lock lock = new ReentrantLock();
+Condition conditionput = lock.newCondition();
+conditionput.await();
+conditionget.signal();
+
+ReadWriteLock rwl = new ReentrantReadWriteLock();
+rwl.readLock().lock()
+rwl.readLock().unlock();
+rwl.writeLock().lock();
+rwl.writeLock().unlock();
+
+Semaphore sp = new Semaphore(1,true);
+sp.acquire();
+sp.release();
+sp.availablePermits();
+
+CyclicBarrier cb = new CyclicBarrier(3);
+cb.await();
+cb.getNumberWaiting();
+
+CountDownLatch cdl1 = new CountDownLatch(1);
+cdl1.await();
+cdl1.countDown();
+
+Exchanger<String> e = new Exchanger<String>();
+data2 = e.exchange(data1);
+
+int i = 0
+int j = i++
+输出j=0
+i++在底层分为三步，不是原子操作
+int temp = i
+i = i+1
+j = temp
+iava.util.concurrent.atomic包提供了各种原子操作的变量
+automicInteger, automicBoolean, automicIntegerArray，automicIong等这些变量都被volatile修饰，保证了内存可见性，用CAS算法保证原子性操作
+用volatile修饰的属性表示，当某个线程对共享变量进行修改写入到主内存中，会告知其他线程其线程内存中的变量值已经过期了，需要再次从主内存中读取
+CAS算法
+	线程从共享内存中读取属性值到线程内存中记作V
+	线程对属性进行改变，改变后的值记作A
+	当线程往共享内存中写值的时候会再次读取属性的值记作B
+	当且仅当V==B时 A才会被写入内存
+这些变量效率比synchronized修饰i++操作的效率高，因为原子操作不会阻塞，不会放弃执行权，会立即再去尝试，再次更新
+synchronized锁定的是堆里面的对象，锁的信息也都记录在上面
+非静态同步方法锁的是this(调用这个方法的对象)，静态同步方法锁定的是该方法所在的类
+一个线程已经拥有某个对象的锁，再次申请时仍然会得到该对象的锁，也就是说synchronized获得的锁是可重入的
+子类的同步方法可以调用父类的同步方法
+程序出现异常，锁会被释放
+如果锁对象的属性改变了，对锁定的对象没影响，但当锁对象的引用改变了，则锁也改变了
+只有wait会释放锁，sleep和notify不会释放锁，当线程从wait状态被唤醒时，需要重新申请锁
+
+Execotor：里面只有一个方法execute（），用于执行某一个任务，
+ExecotorService：一个在后台不停运行的服务，等待任务到来，里面能执行任务的除了有execute（只能传入runnable）方法。还有submit方法，它可以传入一个runnable或者callable
+Executors：操作以上类的工具类
