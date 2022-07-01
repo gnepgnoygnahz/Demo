@@ -12,7 +12,7 @@
     <artifactId>kafka</artifactId>
 
     <properties>
-        <kafka.version>0.11.0.1</kafka.version>
+        <kafka.version>0.11.0.2</kafka.version>
     </properties>
 
     <dependencies>
