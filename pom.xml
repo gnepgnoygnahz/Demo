@@ -29,7 +29,7 @@
         <hadoop.version>2.7.3</hadoop.version>
         <fastjson.version>1.2.51</fastjson.version>
         <storm.version>1.2.3</storm.version>
-        <kafka.version>0.11.0.1</kafka.version>
+        <kafka.version>0.11.0.2</kafka.version>
         <elasticsearch.vesrion>5.4.3</elasticsearch.vesrion>
         <mysql.version>8.0.18</mysql.version>
         <junit.version>4.12</junit.version>
